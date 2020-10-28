@@ -1,7 +1,6 @@
 using System;
 
-namespace baby_tracker
-{
+
     class Sleep
     {
         public int timeSlept { get; set;}        
@@ -10,5 +9,8 @@ namespace baby_tracker
         {
             timeSlept = time;
         }
+        public override string ToString()
+        {
+            return "Your baby slept for " + timeSlept + " hours!";
+        }
     }
-}

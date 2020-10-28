@@ -1,23 +1,41 @@
 using System;
 using System.Collections.Generic;
-// using Newtonsoft.Json;
 
-namespace baby_tracker
-{
+
     public class Baby
     {
-         public string firstName{ get; set;}
-         public string lastName{ get; set;}
-
-         public Baby()
-         {}
-
-         public Baby(string firstname, string lastname)
+         private string name;
+         private int weight;
+         private int height;
+         public Baby(string name, int weight, int height)
          {
-             firstName = firstname;
-             lastName = lastname;
+             this.name = name;
+             this.weight = weight;
+             this.height = height;
          }
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public int Weight
+        {
+            get { return weight; }
+            set { weight = value; }
+        }
+        public int Height
+        {
+            get { return height; }
+            set { height = value; }
+        }
+
+
+    public override string ToString()
+    {
+        return "Name: " + Name + " Weight: " + Weight + " Height: " + Height;
+    } 
+   
     }
 
-
-}
+    

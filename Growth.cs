@@ -1,7 +1,6 @@
 using System;
 
-namespace baby_tracker
-{
+
     class Grow
     {
         public int Weight { get; set;}
@@ -12,5 +11,9 @@ namespace baby_tracker
             Weight = weight;
             Height = height;
         }
+
+        public override string ToString()
+    {
+        return "Your baby is " + Weight + " pounds and is " + Height + " inches long!";
     }
-}
+    }
