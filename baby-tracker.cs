@@ -22,7 +22,7 @@ using System.IO;
             // Console.WriteLine(grow);
             // Sleep sleep = new Sleep(3);
             // Console.WriteLine(sleep);
-
+            Console.Clear();
             bool showMenu = true;
             while(showMenu)
             {
@@ -34,7 +34,7 @@ using System.IO;
 
         public static bool DisplayMenu()
             {
-                Console.Clear();
+                
                 Console.WriteLine("Choose an option:");
                 Console.WriteLine("1) Create new Profile");
                 Console.WriteLine("2) Select Profile");
@@ -62,11 +62,14 @@ using System.IO;
         string result = Console.ReadLine();
         Console.WriteLine("How much did your baby weigh at birth in pounds?");
         string reply = Console.ReadLine();
-        
+        int reply1 = int.Parse(reply);
         Console.WriteLine("How tall was your baby at birth in inches?");
         string response = Console.ReadLine();
-
-        return result + reply + response;  
+        int response1 = int.Parse(response);
+        Console.WriteLine(result + " was " + reply + " pounds at birth and " + response + " inches long!");
+        Baby baby1 = new Baby(result, reply1, response1);
+        Console.WriteLine(baby1);
+        return result + reply + response;         
     }
 
     public static string SelectProfile()
