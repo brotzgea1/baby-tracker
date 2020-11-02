@@ -2,37 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
-// using Newtonsoft.Json;
 
-
+namespace baby_tracker
+{
     class Program
-    {        
-        
+    {  
         static void Main(string[] args)
         {  
-            // List<Baby> bebe = new List<Baby>();
-            // bebe.Add(new Baby("Silas", 10, 23));
-            // foreach (Baby aBaby in bebe)
-            // {
-            //     Console.WriteLine(aBaby);
-            // } 
-            // Feed feed = new Feed(10, 4);
-            // Console.WriteLine(feed);
-            // Grow grow = new Grow(10, 21);
-            // Console.WriteLine(grow);
-            // Sleep sleep = new Sleep(3);
-            // Console.WriteLine(sleep);
+            List<Baby> bebe = new List<Baby>();
             Console.Clear();
             bool showMenu = true;
             while(showMenu)
             {
-                showMenu = DisplayMenu();
-            }
-        
-        
+                showMenu = DisplayMenu(bebe);
+            }        
         }
 
-        public static bool DisplayMenu()
+        public static bool DisplayMenu(List<Baby> bebe)
             {
                 
                 Console.WriteLine("Choose an option:");
@@ -44,7 +30,7 @@ using System.IO;
                 switch (Console.ReadLine())
                  {
                      case "1":
-                        CreateProfile();
+                        CreateProfile(bebe);
                         return true;
                      case "2":
                         SelectProfile();
@@ -55,7 +41,7 @@ using System.IO;
                         return true;
                  }
             }
-        public static string CreateProfile()
+        public static string CreateProfile(List<Baby> bebe)
     {
         
         Console.WriteLine("What is your baby's name?");
@@ -68,6 +54,7 @@ using System.IO;
         int response1 = int.Parse(response);
         Console.WriteLine(result + " was " + reply + " pounds at birth and " + response + " inches long!");
         Baby baby1 = new Baby(result, reply1, response1);
+        bebe.Add(baby1);
         Console.WriteLine(baby1);
         return result + reply + response;         
     }
@@ -81,3 +68,4 @@ using System.IO;
         
         
     }
+}
