@@ -1,39 +1,26 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.IO;
 
 
     public class Baby
     {
-         private string name;
-         private int weight;
-         private int height;
+        public string Name { get; set; }
+        public int InitWeight { get; set; }
+        public int InitHeight { get; set; }
+        public int CurWeight { get; set; }
+        public int CurHeight { get; set; }
          public Baby(string name, int weight, int height)
          {
-             this.name = name;
-             this.weight = weight;
-             this.height = height;
+             Name = name;
+             InitWeight = weight;
+             InitHeight = height;
          }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        public int Weight
-        {
-            get { return weight; }
-            set { weight = value; }
-        }
-        public int Height
-        {
-            get { return height; }
-            set { height = value; }
-        }
-
 
     public override string ToString()
     {
-        return "Name: " + Name + " Weight: " + Weight + " Height: " + Height;
+        return "Name: " + Name + " Weight: " + InitWeight + " Height: " + InitHeight;
     } 
    
     }

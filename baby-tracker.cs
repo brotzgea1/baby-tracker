@@ -10,6 +10,7 @@ namespace baby_tracker
         static void Main(string[] args)
         {  
             List<Baby> bebe = new List<Baby>();
+            List<Grow> grow = new List<Grow>();
             Console.Clear();
             bool showMenu = true;
             while(showMenu)
@@ -23,8 +24,9 @@ namespace baby_tracker
                 
                 Console.WriteLine("Choose an option:");
                 Console.WriteLine("1) Create new Profile");
-                Console.WriteLine("2) Select Profile");
-                Console.WriteLine("3) Exit");
+                Console.WriteLine("2) Profile Search");
+                Console.WriteLine("3) Add new Measurements");
+                Console.WriteLine("4) Exit");
                 Console.Write("\r\nSelect an option: ");
 
                 switch (Console.ReadLine())
@@ -33,9 +35,12 @@ namespace baby_tracker
                         CreateProfile(bebe);
                         return true;
                      case "2":
-                        SelectProfile();
+                        SelectProfile(bebe);
                         return true;
-                     case "3":
+                    case "3":
+                        GrowthChart(bebe);
+                        return true;
+                     case "4":
                         return false;
                      default:
                         return true;
@@ -59,12 +64,67 @@ namespace baby_tracker
         return result + reply + response;         
     }
 
-    public static string SelectProfile()
+    public static string SelectProfile(List<Baby> bebe)
     {
+        
         Console.WriteLine("Please enter the name of your baby. ");
-        string input = Console.ReadLine();
-        return input;
+        string result = Console.ReadLine();
+        foreach(Baby ababy in bebe)
+        {
+            if(result == ababy.Name)
+            {
+                var nifty = ababy;
+                Console.WriteLine(ababy);
+            }
+            else
+            {
+                Console.WriteLine("");
+            }
+        }
+        // foreach(Baby ababy in bebe)
+        // {
+        //     if(result == ababy.Name)
+        //     {
+        //         bebe.Remove(ababy);
+        //         bebe.Insert(0, ababy);
+        //         Console.WriteLine(ababy);
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("");
+        //     }
+        // }
+        return result;
     } 
+
+    public static int GrowthChart(List<Baby> bebe)
+    {
+        Console.WriteLine("Enter your baby's name. ");
+        var result = Console.ReadLine();
+        foreach(Baby ababy in bebe)
+        {
+            if(result == ababy.Name)
+            {
+                Console.WriteLine("What is your baby's current weight? ");
+                string answer = Console.ReadLine();
+                int answer1 = int.Parse(answer);
+                ababy.CurWeight = answer1;
+                int newWeight = ababy.CurWeight - ababy.InitWeight;
+                Console.WriteLine("What is your baby's current height? ");
+                string reply = Console.ReadLine();
+                int reply1 = int.Parse(reply);
+                ababy.CurHeight = reply1;
+                int newHeight = ababy.CurHeight - ababy.InitHeight;
+                Console.WriteLine("Your baby has grown by: " + newWeight + " pounds and " + newHeight + " inches");
+            }
+            else
+            {
+                Console.WriteLine("");
+            }
+        }
+        return 21;
+
+    }
         
         
     }
