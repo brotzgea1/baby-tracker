@@ -1,9 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-
-
     public class Baby
     {
         public string Name { get; set; }
@@ -11,11 +6,13 @@ using System.IO;
         public int InitHeight { get; set; }
         public int CurWeight { get; set; }
         public int CurHeight { get; set; }
-         public Baby(string name, int weight, int height)
+        public DateTime Date { get; set; }
+         public Baby(string name, int weight, int height, DateTime date)
          {
              Name = name;
              InitWeight = weight;
              InitHeight = height;
+             Date = date;
          }
 
     public override string ToString()
