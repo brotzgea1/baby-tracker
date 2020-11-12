@@ -9,8 +9,16 @@ namespace baby_tracker
     {  
         static void Main(string[] args)
         {  
-            List<Baby> bebe = new List<Baby>();
-            Console.Clear();
+            List<Baby> bebe = new List<Baby>();            
+            DateTime dob1 = new DateTime(1991, 01, 01);
+            Baby baby1 = new Baby("Andrew", 9, 21, dob1);
+            bebe.Add(baby1);            
+            DateTime dob2 = new DateTime(2020, 08, 25);
+            Baby baby2 = new Baby("Silas", 10, 21, dob2);
+            bebe.Add(baby2); 
+            DateTime dob3 = new DateTime(1991, 10, 21);
+            Baby baby3 = new Baby("Lindsay", 8, 21, dob3);
+            bebe.Add(baby3);
             bool showMenu = true;
             while(showMenu)
             {
@@ -20,7 +28,7 @@ namespace baby_tracker
 
         public static bool DisplayMenu(List<Baby> bebe)
             {
-                
+                Console.Clear();
                 Console.WriteLine("Choose an option:");
                 Console.WriteLine("1) Create new Profile");
                 Console.WriteLine("2) Profile Search");
@@ -66,6 +74,7 @@ namespace baby_tracker
                 Baby baby1 = new Baby(result, reply1, response1, dob);
                 bebe.Add(baby1);
                 Console.WriteLine(baby1);
+                System.Threading.Thread.Sleep(5000);
                 return result + reply + response;         
             }
 
@@ -81,11 +90,8 @@ namespace baby_tracker
                         var nifty = ababy;
                         Console.WriteLine(ababy);
                     }
-                    else
-                    {
-                        Console.WriteLine("");
-                    }
                 }
+                System.Threading.Thread.Sleep(5000);
                 return result;
             } 
 
@@ -114,6 +120,7 @@ namespace baby_tracker
                         Console.WriteLine("");
                     }
                 }
+                System.Threading.Thread.Sleep(5000);
                 return result;
 
             }
@@ -126,10 +133,28 @@ namespace baby_tracker
             {
                 if (ababy.Name == reply)
                 {
-                    int age = DateTime.Now.Year - ababy.Date.Year;
-                    Console.WriteLine( ababy.Name + " is " + age + " years old.");
+                    DateTime currentDate = DateTime.Now;
+                    int _Years = new DateTime(DateTime.Now.Subtract(ababy.Date).Ticks).Year - 1;
+                    DateTime _DOBDateNow = ababy.Date.AddYears(_Years);
+                    int _Months = 0;
+                    for (int i = 1; i <= 12; i++)
+                    {
+                        if(_DOBDateNow.AddMonths(i) == currentDate)
+                        {
+                            _Months = i;
+                            break;
+                        }
+                        else if (_DOBDateNow.AddMonths(i) >= currentDate)
+                        {
+                            _Months = i - 1;
+                            break;
+                        }
+                    }
+                    int Days = currentDate.Subtract(_DOBDateNow.AddMonths(_Months)).Days;
+                    Console.WriteLine(ababy.Name + "is " + _Years + " years, " + _Months + " months, and " + Days + " days old!");
                 }
             }
+            System.Threading.Thread.Sleep(5000);
             return reply;
         }
         
