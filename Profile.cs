@@ -15,6 +15,8 @@ using System;
              Date = date;
          }
 
+        ///// when displaying the profile information, this is the override statement used ///////
+
     public override string ToString()
     {
         return "Name: " + Name + " Weight: " + InitWeight + " Height: " + InitHeight;

@@ -9,6 +9,7 @@ namespace baby_tracker
     {  
         static void Main(string[] args)
         {  
+            ///// My master list and initial profiles /////
             List<Baby> bebe = new List<Baby>();            
             DateTime dob1 = new DateTime(1991, 01, 01);
             Baby baby1 = new Baby("Andrew", 9, 21, dob1);
@@ -19,6 +20,7 @@ namespace baby_tracker
             DateTime dob3 = new DateTime(1991, 10, 21);
             Baby baby3 = new Baby("Lindsay", 8, 21, dob3);
             bebe.Add(baby3);
+            ////// Master Loop ////////
             bool showMenu = true;
             while(showMenu)
             {
@@ -26,6 +28,7 @@ namespace baby_tracker
             }        
         }
 
+        ///// Function called by master loop. Runs the switch statement //////
         public static bool DisplayMenu(List<Baby> bebe)
             {
                 Console.Clear();
@@ -57,9 +60,11 @@ namespace baby_tracker
                         return true;
                  }
             }
+
+            ///// Creates a new profile and adds it to the master list //////
         public static string CreateProfile(List<Baby> bebe)
             {
-                
+                Console.Clear();
                 Console.WriteLine("What is your baby's name?");
                 string result = Console.ReadLine();
                 Console.WriteLine("How much did your baby weigh at birth in pounds?");
@@ -78,9 +83,11 @@ namespace baby_tracker
                 return result + reply + response;         
             }
 
+
+        /////// Searches through the master list and displays the appropriate profile /////////
         public static string SelectProfile(List<Baby> bebe)
             {
-                
+                Console.Clear();
                 Console.WriteLine("Please enter the name of your baby. ");
                 string result = Console.ReadLine();
                 foreach(Baby ababy in bebe)
@@ -95,8 +102,10 @@ namespace baby_tracker
                 return result;
             } 
 
+        ////// Takes new weight and height measurements and compares to the original size, displaying the difference //////
         public static string GrowthChart(List<Baby> bebe)
             {
+                Console.Clear();
                 Console.WriteLine("Enter your baby's name. ");
                 var result = Console.ReadLine();
                 foreach(Baby ababy in bebe)
@@ -125,8 +134,11 @@ namespace baby_tracker
 
             }
 
+
+        /////// Takes the profile's birthdate and compares to the current date, calculating how old the baby is ///////
         public static string HowOld(List<Baby> bebe)
         {
+            Console.Clear();
             Console.WriteLine("Who's age do you want to get?");
             string reply = Console.ReadLine();
             foreach (Baby ababy in bebe)
@@ -151,7 +163,7 @@ namespace baby_tracker
                         }
                     }
                     int Days = currentDate.Subtract(_DOBDateNow.AddMonths(_Months)).Days;
-                    Console.WriteLine(ababy.Name + "is " + _Years + " years, " + _Months + " months, and " + Days + " days old!");
+                    Console.WriteLine(ababy.Name + " is " + _Years + " years, " + _Months + " months, and " + Days + " days old!");
                 }
             }
             System.Threading.Thread.Sleep(5000);
