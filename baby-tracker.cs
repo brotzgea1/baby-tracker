@@ -31,7 +31,15 @@ namespace baby_tracker
         ///// Function called by master loop. Runs the switch statement //////
         public static bool DisplayMenu(List<Baby> bebe)
             {
+                string title = @"
+,-----.          ,--.               ,--------.                     ,--.                  
+|  |) /_  ,--,--.|  |-.,--. ,--.    '--.  .--',--.--. ,--,--. ,---.|  |,-. ,---. ,--.--. 
+|  .-.  \' ,-.  || .-. '\  '  /        |  |   |  .--'' ,-.  || .--'|     /| .-. :|  .--' 
+|  '--' /\ '-'  || `-' | \   '         |  |   |  |   \ '-'  |\ `--.|  \  \\   --.|  |    
+`------'  `--`--' `---'.-'  /          `--'   `--'    `--`--' `---'`--'`--'`----'`--'                                                                                                                              
+                ";
                 Console.Clear();
+                Console.WriteLine(title);
                 Console.WriteLine("Choose an option:");
                 Console.WriteLine("1) Create new Profile");
                 Console.WriteLine("2) Profile Search");
